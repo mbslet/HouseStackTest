@@ -19,20 +19,20 @@ export class NotesService {
   async findByDate(date: string): Promise<Note[]> {
     const parsedDate = new Date(date);
 
-    // Verificando se a data é válida
+    // Checking if the date is valid
     if (isNaN(parsedDate.getTime())) {
       throw new Error("Invalid date format");
     }
 
-    // Fazendo a comparação de datas, considerando apenas a data (hora:00:00:00)
+    // Comparing dates, considering only the date (time: 00:00:00)
     const startOfDay = new Date(parsedDate.setHours(0, 0, 0, 0));
     const endOfDay = new Date(parsedDate.setHours(23, 59, 59, 999));
 
     return this.noteModel
       .find({
         createdAt: {
-          $gte: startOfDay,  // Maior ou igual ao início do dia
-          $lt: endOfDay,     // Menor que o final do dia
+          $gte: startOfDay,  // Greater than or equal to the start of the day
+          $lt: endOfDay,     // Less than the end of the day
         },
       })
       .exec();
@@ -57,4 +57,3 @@ export class NotesService {
     }
   }
 }
-

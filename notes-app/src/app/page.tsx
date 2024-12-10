@@ -9,26 +9,25 @@ export default function Home() {
   const [notes, setNotes] = useState([]);
   const [form, setForm] = useState({ title: '', content: '' });
   const [editId, setEditId] = useState<string | null>(null);
-  const [filterDate, setFilterDate] = useState<string>(''); // Estado para filtro por data
-  const [noResults, setNoResults] = useState<boolean>(false); // Estado para verificar se há resultados
+  const [filterDate, setFilterDate] = useState<string>('');
+  const [noResults, setNoResults] = useState<boolean>(false);
 
   useEffect(() => {
-    fetchNotes(); // Chama a função para buscar as notas ao carregar a página
+    fetchNotes();
   }, []);
 
   const fetchNotes = async (dateFilter?: string) => {
     try {
-      // Faz a requisição com o filtro de data, se houver
       const { data } = await axios.get(dateFilter ? `${API_URL}?createdAt=${dateFilter}` : API_URL);
       if (data.length === 0) {
-        setNoResults(true); // Se não houver notas, seta a mensagem de "sem resultados"
+        setNoResults(true);
       } else {
-        setNoResults(false); // Se houver notas, remove a mensagem de "sem resultados"
+        setNoResults(false);
       }
-      setNotes(data); // Atualiza as notas no estado
+      setNotes(data);
     } catch (error) {
-      console.error('Erro ao buscar as notas:', error);
-      setNoResults(true); // Em caso de erro, também exibe a mensagem
+      console.error('Error fetching notes:', error);
+      setNoResults(true);
     }
   };
 
@@ -41,12 +40,12 @@ export default function Home() {
       await axios.post(API_URL, form);
     }
     setForm({ title: '', content: '' });
-    fetchNotes(); // Atualiza as notas após a criação ou edição
+    fetchNotes();
   };
 
   const handleDelete = async (id: string) => {
     await axios.delete(`${API_URL}/${id}`);
-    fetchNotes(); // Atualiza as notas após a exclusão
+    fetchNotes();
   };
 
   const handleEdit = (note: any) => {
@@ -56,8 +55,8 @@ export default function Home() {
 
   const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedDate = e.target.value;
-    setFilterDate(selectedDate); // Atualiza o estado do filtro
-    fetchNotes(selectedDate); // Chama a função de busca com o filtro de data
+    setFilterDate(selectedDate);
+    fetchNotes(selectedDate);
   };
 
   return (
@@ -65,7 +64,7 @@ export default function Home() {
       <div className="max-w-4xl mx-auto bg-white shadow-2xl rounded-2xl p-8">
         <h1 className="text-3xl font-extrabold text-gray-400 text-center mb-6">Personal Notes</h1>
         
-        {/* Formulário para adicionar/editar notas */}
+        {/* Form to add/edit notes */}
         <form onSubmit={handleSubmit} className="space-y-6 mb-8">
           <div>
             <label className="block text-lg text-gray-700 font-semibold">Title</label>
@@ -94,7 +93,7 @@ export default function Home() {
           </button>
         </form>
 
-        {/* Filtro por data dentro da lista de notas */}
+        {/* Filter by date within the list of notes */}
         <div className="mb-6">
           <label className="block text-lg text-gray-700 font-semibold">Filter by Date</label>
           <input
@@ -105,10 +104,10 @@ export default function Home() {
           />
         </div>
 
-        {/* Mensagem de "sem resultados" se não houver notas para o filtro */}
+        {/* "No results" message if there are no notes for the selected date */}
         {noResults && <p className="text-center text-red-500 mt-4">No notes found for the selected date.</p>}
 
-        {/* Lista de notas */}
+        {/* List of notes */}
         <ul className="space-y-6">
           {notes.map((note: any) => (
             <li

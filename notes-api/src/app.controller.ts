@@ -17,7 +17,7 @@ export class NotesController {
       try {
         return await this.notesService.findByDate(createdAt);
       } catch (error) {
-        // Se a data for inválida, retornamos uma resposta de erro
+        // If the date is invalid, we return an error response
         throw new BadRequestException('Invalid date format');
       }
     }
