@@ -86,7 +86,6 @@ O frontend estará disponível em: [http://localhost:3001](http://localhost:3001
     }
     ```
 - **`DELETE /notes/:id`**: Remove uma nota.
-- **`GET /notes?date=<YYYY-MM-DD>`**: Filtra notas por data de criação.
 
 ---
 
