@@ -1,75 +1,75 @@
 # Notes Application
 
-Este é um projeto full-stack para gerenciamento de notas, desenvolvido com **NestJS** no backend e **Next.js** no frontend.
+This is a full-stack project for note management, developed with **NestJS** on the backend and **Next.js** on the frontend.
 
 ---
 
 ## Prerequisites
 
-Certifique-se de ter os seguintes requisitos instalados na sua máquina:
-- **Node.js** (recomendado: versão LTS mais recente)
+Make sure you have the following requirements installed on your machine:
+- **Node.js** (recommended: latest LTS version)
 - **npm** (Node Package Manager)
-- **MongoDB** (para o banco de dados)
+- **MongoDB** (for the database)
 
 ---
 
-## Instalação
+## Installation
 
-1. **Clone o repositório** para sua máquina local:
+1. **Clone the repository** to your local machine:
     ```sh
     git clone <repository_url>
     ```
 
-2. **Navegue até o diretório do projeto**:
+2. **Navigate to the project directory**:
     ```sh
     cd notes-application
     ```
 
 ### Backend
 
-1. **Instale as dependências do backend**:
+1. **Install the backend dependencies**:
     ```sh
     cd backend
     npm install
     ```
 
-2. **Configure as variáveis de ambiente**:
-    - Crie um arquivo `.env` na pasta `backend` com os seguintes parâmetros:
+2. **Configure the environment variables**:
+    - Create a `.env` file in the `backend` folder with the following parameters:
       ```
-      MONGO_URI=<sua conexão MongoDB>
+      MONGO_URI=<your MongoDB connection>
       ```
 
-3. **Inicie o backend**:
+3. **Start the backend**:
     ```sh
     npm run start
     ```
 
-O backend estará disponível em: [http://localhost:3000](http://localhost:3000)
+The backend will be available at: [http://localhost:3000](http://localhost:3000)
 
 ---
 
 ### Frontend
 
-1. **Instale as dependências do frontend**:
+1. **Install the frontend dependencies**:
     ```sh
     cd frontend
     npm install
     ```
 
-2. **Inicie o frontend**:
+2. **Start the frontend**:
     ```sh
     npm run dev
     ```
 
-O frontend estará disponível em: [http://localhost:3001](http://localhost:3001)
+The frontend will be available at: [http://localhost:3001](http://localhost:3001)
 
 ---
 
-## Endpoints Disponíveis
+## Available Endpoints
 
 ### Backend (NestJS)
-- **`GET /notes`**: Retorna todas as notas.
-- **`POST /notes`**: Cria uma nova nota.
+- **`GET /notes`**: Returns all notes.
+- **`POST /notes`**: Creates a new note.
   - Body:
     ```json
     {
@@ -77,7 +77,7 @@ O frontend estará disponível em: [http://localhost:3001](http://localhost:3001
       "content": "string"
     }
     ```
-- **`PUT /notes/:id`**: Atualiza uma nota existente.
+- **`PUT /notes/:id`**: Updates an existing note.
   - Body:
     ```json
     {
@@ -85,34 +85,40 @@ O frontend estará disponível em: [http://localhost:3001](http://localhost:3001
       "content": "string"
     }
     ```
-- **`DELETE /notes/:id`**: Remove uma nota.
+- **`DELETE /notes/:id`**: Removes a note.
 
 ---
 
-## Funcionalidades da Aplicação
+## Application Features
 
 ### Frontend (Next.js)
-- **Exibição de notas**: Lista todas as notas com título, conteúdo e data de criação.
-- **Criação de notas**: Adicione novas notas pelo formulário.
-- **Edição de notas**: Edite notas existentes clicando no botão de editar.
-- **Exclusão de notas**: Exclua notas ao clicar no botão de deletar.
+- **Note Display**: Lists all notes with title, content, and creation date.
+- **Note Creation**: Add new notes through the form.
+- **Note Editing**: Edit existing notes by clicking the edit button.
+- **Note Deletion**: Delete notes by clicking the delete button.
 
 ---
 
-## Estrutura do Projeto
+## Project Structure
 
-- **Backend**: Localizado na pasta `backend`, utiliza **NestJS** e **Mongoose** para integração com o MongoDB.
-- **Frontend**: Localizado na pasta `frontend`, utiliza **Next.js** para renderização e gerenciamento do estado da aplicação.
+- **Backend**: Located in the `backend` folder, uses **NestJS** and **Mongoose** for MongoDB integration.
+- **Frontend**: Located in the `frontend` folder, uses **Next.js** for rendering and application state management.
 
 ---
 
-## Acessando a Aplicação
+## Accessing the Application
 
 - **Frontend**: [http://localhost:3001](http://localhost:3001)  
 - **Backend**: [http://localhost:3000](http://localhost:3000)  
 
 ---
 
-## Problemas ou Dúvidas
+## Issues or Questions
 
-Se você encontrar algum problema ou precisar de suporte, sinta-se à vontade para abrir uma _issue_ no repositório.
+If you encounter any issues or need support, feel free to open an issue in the repository.
+
+
+## Application Preview
+Here are some images that show the appearance of the application:
+
+![Preview](/preview.png)
